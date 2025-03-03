@@ -1,5 +1,5 @@
 "use client";
-import {useEffect, useRef, useCallback} from "react";
+import { useEffect, useRef, useCallback } from "react";
 import styles from "./MatrixRain.module.scss";
 
 const MatrixRain = () => {
@@ -7,20 +7,28 @@ const MatrixRain = () => {
   const animationFrameId = useRef();
   const dropsRef = useRef([]);
 
-  const characters = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン☠†‡§¶©®™€£¥¢₿∞≈≠≤≥±×÷√∛∜∫∮∯∰∱∲∳⌀⌁⌂⌃⌄⌅⌆⌇⌈⌉⌊⌋⌌⌍⌎⌏⌐⌑⌒⌓⌔⌕⌖⌗⌘⌙⌜⌝⌞⌟⌠⌡⌢⌣⌤⌥⌦⌧⌨〈〉⌫⌬⌭⌮⌯89@#$%^&*()_+{}:\"<>?[];',./`~₿Ξ⟠₳Ψ";
+  const characters =
+    "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン☠†‡§¶©®™€£¥¢₿∞≈≠≤≥±×÷√∛∜∫∮∯∰∱∲∳⌀⌁⌂⌃⌄⌅⌆⌇⌈⌉⌊⌋⌌⌍⌎⌏⌐⌑⌒⌓⌔⌕⌖⌗⌘⌙⌜⌝⌞⌟⌠⌡⌢⌣⌤⌥⌦⌧⌨〈〉⌫⌬⌭⌮⌯89@#$%^&*()_+{}:\"<>?[];',./`~₿Ξ⟠₳Ψ";
 
   const charactersArray = characters.split("");
   const fontSize = 8;
   const speedFactor = 1;
 
-  const getRandomStartPosition = useCallback(() => ({
-    y: Math.random() * window.innerHeight / fontSize * 1.5 - window.innerHeight / fontSize * 0.5,
-    lastRenderedY: 0,
-  }), []);
+  const getRandomStartPosition = useCallback(
+    () => ({
+      y:
+        ((Math.random() * window.innerHeight) / fontSize) * 1.5 -
+        (window.innerHeight / fontSize) * 0.5,
+      lastRenderedY: 0,
+    }),
+    []
+  );
 
   const initializeDrops = useCallback(() => {
     const columns = Math.ceil(window.innerWidth / fontSize);
-    dropsRef.current = Array(columns).fill(null).map(() => getRandomStartPosition());
+    dropsRef.current = Array(columns)
+      .fill(null)
+      .map(() => getRandomStartPosition());
   }, [getRandomStartPosition]);
 
   const drawMatrixRain = useCallback(() => {
@@ -44,7 +52,8 @@ const MatrixRain = () => {
       const currentY = Math.floor(drop.y);
 
       if (currentY > drop.lastRenderedY && currentY >= 0) {
-        const text = charactersArray[Math.floor(Math.random() * charactersArray.length)];
+        const text =
+          charactersArray[Math.floor(Math.random() * charactersArray.length)];
         ctx.fillText(text, i * fontSize, currentY * fontSize);
         drop.lastRenderedY = currentY;
       }
@@ -94,9 +103,11 @@ const MatrixRain = () => {
     };
   }, [drawMatrixRain, handleResize]);
 
-  return <div className={styles.container}>
-    <canvas ref={canvasRef} className={styles.canvas} />
-  </div>;
+  return (
+    <div className={styles.container}>
+      <canvas ref={canvasRef} className={styles.canvas} />
+    </div>
+  );
 };
 
 export default MatrixRain;

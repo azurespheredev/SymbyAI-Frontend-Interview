@@ -1,4 +1,4 @@
-.banner{
+.banner {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,11 +10,10 @@
   white-space: wrap;
   text-align: center;
 
-
   background-color: var(--primaryColor);
 }
 
-section.aboveTheFold{
+section.aboveTheFold {
   position: relative;
 
   display: flex;
@@ -22,8 +21,7 @@ section.aboveTheFold{
   justify-content: center;
   min-height: 100vh;
 
-
-  > div{
+  > div {
     position: relative;
     z-index: 2;
 
@@ -34,7 +32,7 @@ section.aboveTheFold{
 
     text-align: center;
 
-    .animation{
+    .animation {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -43,82 +41,88 @@ section.aboveTheFold{
       text-align: center;
     }
 
-    h1{
+    h1 {
       margin-bottom: var(--spacing6);
 
       font-size: var(--fontSize9);
       line-height: 1em;
-      @media (max-width: 800px){font-size: var(--fontSize8);}
-      @media (max-width: 500px){font-size: var(--fontSize7);}
+      @media (max-width: 800px) {
+        font-size: var(--fontSize8);
+      }
+      @media (max-width: 500px) {
+        font-size: var(--fontSize7);
+      }
     }
 
-    .subheadline{
+    .subheadline {
       margin-bottom: var(--spacing6);
 
       font-size: var(--fontSize5);
       line-height: var(--lineHeight);
-      @media (max-width: 1300px){font-size: var(--fontSize4);}
-      @media (max-width: 1100px){font-size: var(--fontSize3);}
+      @media (max-width: 1300px) {
+        font-size: var(--fontSize4);
+      }
+      @media (max-width: 1100px) {
+        font-size: var(--fontSize3);
+      }
     }
 
-    .subsubheadline{
+    .subsubheadline {
       margin-bottom: var(--spacing3);
 
       font-size: var(--fontSize3);
       line-height: var(--lineHeight);
     }
 
-    .contractAddress{
-      @media (max-width: 500px){
+    .contractAddress {
+      @media (max-width: 500px) {
         font-size: var(--fontSize0);
       }
     }
 
-    .buttons{
+    .buttons {
       display: flex;
       gap: var(--spacing6);
       margin-top: var(--spacing7);
-      @media (max-width: 650px){
+      @media (max-width: 650px) {
         flex-direction: column;
       }
     }
   }
 }
 
-.future{
-  .cards{
+.future {
+  .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing6);
-    @media (max-width: 1200px){
+    @media (max-width: 1200px) {
       grid-template-columns: 1fr;
     }
   }
 }
 
-
-.lumina{
+.lumina {
   z-index: 2;
-  div{
+  div {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    .cta{
+    .cta {
       margin-top: var(--spacing7);
     }
   }
 }
 
-
-.framework{
+.framework {
   z-index: 2;
-  div{
+  div {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    svg{
+    svg {
       max-width: 100%;
       height: auto;
     }

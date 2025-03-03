@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, {forwardRef} from "react";
+import React, { forwardRef } from "react";
 import LoadingSvg from "@/public/icons/loading.svg";
 import constructClassName from "@/utilities/constructClassName";
 import css from "./Button.module.scss";
@@ -11,7 +11,7 @@ import css from "./Button.module.scss";
  * @param icon     - Main icon of the button
  * @param iconLeft - Icon to display on the left side of the button content
  */
-const Inner = ({children, icon, iconLeft}) => (
+const Inner = ({ children, icon, iconLeft }) => (
   <>
     <span className={css.text}>
       {iconLeft}
@@ -45,62 +45,87 @@ const Inner = ({children, icon, iconLeft}) => (
  * @param type       - [optional] HTML button type (default: "button")
  * @param wrap       - [optional] If true, allows text wrapping inside the button (default: false)
  */
-export default forwardRef(({
-  children,
-  className = "",
-  danger = false,
-  dataTestId = "",
-  disabled = false,
-  ghost = false,
-  helperText = null,
-  href = "",
-  icon = null,
-  iconLeft = null,
-  large = false,
-  loading = false,
-  onClick = null,
-  prefetch = true,
-  target = "_self",
-  type = "button",
-  wrap = false,
-}, ref) => {
-  const fullClassName = constructClassName(css, "button", `custom ${className}`, {ghost, icon: Boolean(icon), disabled, loading, wrap, large, danger});
+export default forwardRef(
+  (
+    {
+      children,
+      className = "",
+      danger = false,
+      dataTestId = "",
+      disabled = false,
+      ghost = false,
+      helperText = null,
+      href = "",
+      icon = null,
+      iconLeft = null,
+      large = false,
+      loading = false,
+      onClick = null,
+      prefetch = true,
+      target = "_self",
+      type = "button",
+      wrap = false,
+    },
+    ref
+  ) => {
+    const fullClassName = constructClassName(
+      css,
+      "button",
+      `custom ${className}`,
+      {
+        ghost,
+        icon: Boolean(icon),
+        disabled,
+        loading,
+        wrap,
+        large,
+        danger,
+      }
+    );
 
-
-  //log click event and call onClick handler
-  function handleClick(e){
-    if (onClick && !loading){
-      onClick(e);
+    function handleClick(e) {
+      if (onClick && !loading) {
+        onClick(e);
+      }
     }
-  }
 
-  if (href){
-    return <Link
-      href={href}
-      className={fullClassName}
-      onClick={handleClick}
-      target={target}
-      prefetch={prefetch}
-      ref={ref}
-      aria-disabled={disabled}
-      data-testid={dataTestId}
-      role="checkbox"
-    >
-      <Inner icon={icon} iconLeft={iconLeft}>{children}</Inner>
-      {helperText && <div className={css.helperText}>{helperText}</div>}
-    </Link>;
+    if (href) {
+      return (
+        <Link
+          href={href}
+          className={fullClassName}
+          onClick={handleClick}
+          target={target}
+          prefetch={prefetch}
+          ref={ref}
+          aria-disabled={disabled ? "true" : "false"}
+          data-testid={dataTestId}
+          role="button"
+        >
+          <Inner icon={icon} iconLeft={iconLeft}>
+            {children}
+          </Inner>
+          {helperText && <div className={css.helperText}>{helperText}</div>}
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        className={fullClassName}
+        onClick={handleClick}
+        ref={ref}
+        type={type}
+        disabled={disabled}
+        data-testid={dataTestId}
+        role="button"
+        aria-disabled={disabled ? "true" : "false"}
+      >
+        <Inner icon={icon} iconLeft={iconLeft}>
+          {children}
+        </Inner>
+        {helperText && <div className={css.helperText}>{helperText}</div>}
+      </button>
+    );
   }
-  return <button
-    className={fullClassName}
-    onClick={handleClick}
-    ref={ref}
-    type={type}
-    disabled={disabled}
-    data-testid={dataTestId}
-    role="checkbox"
-    aria-checked
-  >
-    <Inner icon={icon} iconLeft={iconLeft}>{children}</Inner>
-    {helperText && <div className={css.helperText}>{helperText}</div>}
-  </button>;
-});
+);

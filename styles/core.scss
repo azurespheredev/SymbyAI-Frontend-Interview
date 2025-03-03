@@ -6,15 +6,14 @@
 @import "./_fonts.scss";
 @import "./_touchOnly.scss";
 
-
-html{
+html {
   overflow-x: hidden;
   overflow-y: auto;
 
   font-size: 16px;
 }
 
-body{
+body {
   width: 100vw;
   margin: 0;
   padding: 0;
@@ -28,7 +27,7 @@ body{
 
   background: var(--black);
 }
-main{
+main {
   position: relative;
   z-index: 2;
 
@@ -39,51 +38,48 @@ main{
 
 p,
 ul,
-ol{
+ol {
   max-width: 800px;
 
   line-height: var(--lineHeight);
 
-  &:first-child{
+  &:first-child {
     margin-top: 0;
   }
-  &:last-child{
+  &:last-child {
     margin-bottom: 0;
   }
 }
 
-
-*{
+* {
   scroll-margin-top: calc(var(--navHeight) + var(--spacing6));
   -webkit-tap-highlight-color: transparent;
 }
 
-.initialInvis{
+.initialInvis {
   visibility: hidden;
 }
 
-.dark{
+.dark {
   color: var(--white);
 }
 
-
-b{
+b {
   font-weight: 600;
 }
 
-button{
+button {
   font-size: var(--fontSize2);
   font-family: var(--primaryFont);
 }
 
-
-article{
-  p{
+article {
+  p {
     text-align: left;
   }
 }
 
-hr{
+hr {
   margin: var(--spacing6) 0;
 
   border-color: var(--secondaryColor);
